@@ -69,13 +69,16 @@
 {
     NSUInteger currentIndex = [myViewControllers indexOfObject:viewController];
     
+    // wraparound off: When at first VC, there will be no previous VC
     if(!wrapAround && currentIndex == 0){
         return nil;
     }
     
+    // Decrement index, using modulo for wraparound
     --currentIndex;
-    
     currentIndex = currentIndex % (myViewControllers.count);
+    
+    // Output selected VC
     return [myViewControllers objectAtIndex:currentIndex];
 }
 
@@ -84,12 +87,16 @@
 {
     NSUInteger currentIndex = [myViewControllers indexOfObject:viewController];
     
+    // wraparound off: When at final VC, there will be no subsequent VC
     if(!wrapAround && currentIndex == myViewControllers.count - 1){
         return nil;
     }
     
+    // Increment index, using modulo for wraparound
     ++currentIndex;
     currentIndex = currentIndex % (myViewControllers.count);
+    
+    // Output selected VC
     return [myViewControllers objectAtIndex:currentIndex];
 }
 
