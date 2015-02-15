@@ -31,14 +31,15 @@ First, you'll need to prepare your UIPageViewController:
 * Drag a *Page View Controller* into your Storyboard
 * In the Page View Controller's Identity Inspector, set the class to *TEQuickPageViewController*
 
-![](Screenshots/identityinspector.png)
-![](Screenshots/2-setclass.png)
+![Identity Inspector Button](Screenshots/identityinspector.png)
+
+![Setting a Custom Class](Screenshots/2-setclass.png)
 
 * Open the Page View Controller's attribute inspector, you should see some new attributes for *Quick Page View Controller*. Set *Page Identifier Prefix* to a string of your choice that will identify your sequence of pages. Below, we've used "PageSequence"
 
-![](Screenshots/3-attributeinspector.png)
+![Attribute Inspector Button](Screenshots/3-attributeinspector.png)
 
-![](Screenshots/4-setprefix.png)
+![Setting an Identifier Prefix](Screenshots/4-setprefix.png)
 
 ## Adding Pages
 
@@ -47,9 +48,9 @@ To add a page to your sequence of pages, you need to identify the page as belong
 * Drag a *View Controller* into your Storyboard
 * In the View Controller's Identity Inspector, set the Storyboard Identifier to the Page Identifier Prefix plus the number of the page in order. Below, our first page has an identifier "PageSequence0"
 
-![](Screenshots/identityinspector.png)
+![Identity inspector button](Screenshots/identityinspector.png)
 
-![](Screenshots/page-setidentity.png)
+![Setting the Storyboard Identifier](Screenshots/page-setidentity.png)
 
 Pages are numbered from 0, so the identity of our first three pages would be "PageSequence0", "PageSequence1", "PageSequence2" in this example.
 
