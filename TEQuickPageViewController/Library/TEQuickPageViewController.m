@@ -19,6 +19,7 @@
 }
 
 @synthesize wrapAround;
+@synthesize pageIdentifierPrefix;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -33,8 +34,8 @@
     /* Add controllers 0..n until the first failure */
     for(int i = 0; true; i++){
         @try {
-            // Append to the VC list a VC with storyboard name matching this VC's restorationIdentifier plus i
-            UIViewController* controller = [self.storyboard instantiateViewControllerWithIdentifier:[NSString stringWithFormat:@"%@%d",self.restorationIdentifier,i]];
+            // Append to the VC list a VC with storyboard name matching this VC's prefix plus i
+            UIViewController* controller = [self.storyboard instantiateViewControllerWithIdentifier:[NSString stringWithFormat:@"%@%d",pageIdentifierPrefix,i]];
             [viewControllers addObject:controller];
             
             // Populate the starting controllers as needed
