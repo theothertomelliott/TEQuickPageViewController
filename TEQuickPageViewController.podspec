@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
 					Just add your Page View Controller and View Controllers to your Storyboard, then set a few attributes to add your View Controllers to the sequence of pages.
                    DESC
 
-  s.homepage     = "http://EXAMPLE/TEQuickPageViewController"
+  s.homepage     = "https://github.com/theothertomelliott/TEQuickPageViewController"
   # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
   s.license      = "MIT"
   s.author             = { "Tom Elliott" => "tom.w.elliott@gmail.com" }
