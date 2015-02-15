@@ -37,6 +37,7 @@ First, you'll need to prepare your UIPageViewController:
 * Open the Page View Controller's attribute inspector, you should see some new attributes for *Quick Page View Controller*. Set *Page Identifier Prefix* to a string of your choice that will identify your sequence of pages. Below, we've used "PageSequence"
 
 ![](Screenshots/3-attributeinspector.png)
+
 ![](Screenshots/4-setprefix.png)
 
 ## Adding Pages
@@ -47,6 +48,7 @@ To add a page to your sequence of pages, you need to identify the page as belong
 * In the View Controller's Identity Inspector, set the Storyboard Identifier to the Page Identifier Prefix plus the number of the page in order. Below, our first page has an identifier "PageSequence0"
 
 ![](Screenshots/identityinspector.png)
+
 ![](Screenshots/page-setidentity.png)
 
 Pages are numbered from 0, so the identity of our first three pages would be "PageSequence0", "PageSequence1", "PageSequence2" in this example.
