@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E21A5EBD1AA131AF00E684C9 /* TEQuickPageViewSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = E21A5EBC1AA131AF00E684C9 /* TEQuickPageViewSegue.m */; };
+		E21A5EC01AA1469D00E684C9 /* BasicView.m in Sources */ = {isa = PBXBuildFile; fileRef = E21A5EBF1AA1469D00E684C9 /* BasicView.m */; };
 		E2702DD01A9017E400E28BE8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E2702DCF1A9017E400E28BE8 /* main.m */; };
 		E2702DD31A9017E400E28BE8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E2702DD21A9017E400E28BE8 /* AppDelegate.m */; };
 		E2702DD91A9017E400E28BE8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2702DD71A9017E400E28BE8 /* Main.storyboard */; };
@@ -27,6 +29,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E21A5EBB1AA131AF00E684C9 /* TEQuickPageViewSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TEQuickPageViewSegue.h; path = Library/TEQuickPageViewSegue.h; sourceTree = "<group>"; };
+		E21A5EBC1AA131AF00E684C9 /* TEQuickPageViewSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TEQuickPageViewSegue.m; path = Library/TEQuickPageViewSegue.m; sourceTree = "<group>"; };
+		E21A5EBE1AA1469D00E684C9 /* BasicView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicView.h; sourceTree = "<group>"; };
+		E21A5EBF1AA1469D00E684C9 /* BasicView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicView.m; sourceTree = "<group>"; };
 		E2702DCA1A9017E400E28BE8 /* TEQuickPageViewController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TEQuickPageViewController.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2702DCE1A9017E400E28BE8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E2702DCF1A9017E400E28BE8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -88,6 +94,8 @@
 				E2702DDA1A9017E400E28BE8 /* Images.xcassets */,
 				E2702DDC1A9017E400E28BE8 /* LaunchScreen.xib */,
 				E2702DCD1A9017E400E28BE8 /* Supporting Files */,
+				E21A5EBE1AA1469D00E684C9 /* BasicView.h */,
+				E21A5EBF1AA1469D00E684C9 /* BasicView.m */,
 			);
 			path = TEQuickPageViewController;
 			sourceTree = "<group>";
@@ -123,6 +131,8 @@
 			children = (
 				E2702DF41A90181100E28BE8 /* TEQuickPageViewController.h */,
 				E2702DF51A90181100E28BE8 /* TEQuickPageViewController.m */,
+				E21A5EBB1AA131AF00E684C9 /* TEQuickPageViewSegue.h */,
+				E21A5EBC1AA131AF00E684C9 /* TEQuickPageViewSegue.m */,
 			);
 			name = Library;
 			sourceTree = "<group>";
@@ -227,6 +237,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E21A5EC01AA1469D00E684C9 /* BasicView.m in Sources */,
+				E21A5EBD1AA131AF00E684C9 /* TEQuickPageViewSegue.m in Sources */,
 				E2702DF61A90181100E28BE8 /* TEQuickPageViewController.m in Sources */,
 				E2702DD31A9017E400E28BE8 /* AppDelegate.m in Sources */,
 				E2702DD01A9017E400E28BE8 /* main.m in Sources */,
@@ -422,6 +434,7 @@
 				E2702DEF1A9017E400E28BE8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E2702DF01A9017E400E28BE8 /* Build configuration list for PBXNativeTarget "TEQuickPageViewControllerTests" */ = {
 			isa = XCConfigurationList;
@@ -430,6 +443,7 @@
 				E2702DF21A9017E400E28BE8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -10,7 +10,6 @@
 
 @interface TEQuickPageViewController : UIPageViewController <UIPageViewControllerDelegate, UIPageViewControllerDataSource>
 
-@property (nonatomic) IBInspectable NSString* pageIdentifierPrefix;
 @property (nonatomic) IBInspectable BOOL wrapAround;
 
 @end

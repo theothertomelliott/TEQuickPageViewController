@@ -7,6 +7,7 @@
 //
 
 #import "TEQuickPageViewController.h"
+#import "TEQuickPageViewSegue.h"
 
 @interface TEQuickPageViewController ()
 
@@ -19,7 +20,6 @@
 }
 
 @synthesize wrapAround;
-@synthesize pageIdentifierPrefix;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -27,31 +27,42 @@
     self.delegate = self;
     self.dataSource = self;
     
+    NSNotificationCenter* notificationCenter = [NSNotificationCenter defaultCenter];
     
     NSMutableArray* viewControllers = [NSMutableArray array];
     NSMutableArray* startingViewControllers = [NSMutableArray array];
     
-    /* Add controllers 0..n until the first failure */
-    for(int i = 0; true; i++){
-        @try {
-            // Append to the VC list a VC with storyboard name matching this VC's prefix plus i
-            UIViewController* controller = [self.storyboard instantiateViewControllerWithIdentifier:[NSString stringWithFormat:@"%@%d",pageIdentifierPrefix,i]];
-            [viewControllers addObject:controller];
-            
-            // Populate the starting controllers as needed
-            if(i == 0 || (i == 1 && self.spineLocation == UIPageViewControllerSpineLocationMid)){
-                [startingViewControllers addObject:controller];
-            }
+    id segueObserver = [notificationCenter addObserverForName:TEQuickPageViewSegueNotification object:nil queue:nil usingBlock:^(NSNotification *note) {
         
+        TEQuickPageViewSegue* segue = [TEQuickPageViewSegue segueFromNotification:note];
+        [viewControllers addObject:segue.destinationViewController];
+        
+        // Populate the starting controllers as needed
+        if(viewControllers.count == 1 || (viewControllers.count == 1 && self.spineLocation == UIPageViewControllerSpineLocationMid)){
+            [startingViewControllers addObject:segue.destinationViewController];
         }
-        @catch (NSException *exception) {
-            // On the first failure, stop adding VCs
-            break;
-        }
-        @finally {
-        }
+        
+        // TODO: Identify cycles in the sequence
+        
+        [segue performNextSegueWithIdentifier:@"page"];
+        
+    }];
 
+    id completionObserver = [notificationCenter addObserverForName:TEQuickPageViewSegueNotification object:nil queue:nil usingBlock:^(NSNotification *note) {
+        // We've finished
+    }];
+
+    @try {
+        // Begin execution of all the segues
+        [self performSegueWithIdentifier:@"page" sender:self];
     }
+    @catch (NSException* ex){
+        // TODO: Error out appropriately
+        return;
+    }
+    
+    [notificationCenter removeObserver:segueObserver];
+    [notificationCenter removeObserver:completionObserver];
     
     // Initialize view controllers with first controller
     myViewControllers = viewControllers;
