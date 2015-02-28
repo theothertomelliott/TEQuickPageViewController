@@ -19,11 +19,17 @@
     NSArray *myViewControllers;
 }
 
+@synthesize segueId;
 @synthesize wrapAround;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    __block NSString* mySegueIdentifier = segueId;
+    if(segueId == nil || segueId.length == 0){
+        mySegueIdentifier = @"page";
+    }
+
     self.delegate = self;
     self.dataSource = self;
     
@@ -35,16 +41,16 @@
     id segueObserver = [notificationCenter addObserverForName:TEQuickPageViewSegueNotification object:nil queue:nil usingBlock:^(NSNotification *note) {
         
         TEQuickPageViewSegue* segue = [TEQuickPageViewSegue segueFromNotification:note];
-        [viewControllers addObject:segue.destinationViewController];
+        
+        UIViewController* destinationVC = segue.destinationViewController;
+        [viewControllers addObject:destinationVC];
         
         // Populate the starting controllers as needed
         if(viewControllers.count == 1 || (viewControllers.count == 1 && self.spineLocation == UIPageViewControllerSpineLocationMid)){
-            [startingViewControllers addObject:segue.destinationViewController];
+            [startingViewControllers addObject:destinationVC];
         }
         
-        // TODO: Identify cycles in the sequence
-        
-        [segue performNextSegueWithIdentifier:@"page"];
+        [segue performNextSegueWithIdentifier:mySegueIdentifier];
         
     }];
 
@@ -54,7 +60,7 @@
 
     @try {
         // Begin execution of all the segues
-        [self performSegueWithIdentifier:@"page" sender:self];
+        [self performSegueWithIdentifier:mySegueIdentifier sender:self];
     }
     @catch (NSException* ex){
         // TODO: Error out appropriately
@@ -69,6 +75,15 @@
     [self setViewControllers:startingViewControllers
                    direction:UIPageViewControllerNavigationDirectionForward
                     animated:NO completion:nil];
+}
+
+- (NSData *)dataForView:(UIView *)view {
+    NSMutableData *data = [NSMutableData data];
+    NSKeyedArchiver  *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
+    [archiver encodeObject:view forKey:@"view"];
+    [archiver finishEncoding];
+    
+    return data;
 }
 
 -(UIViewController *)viewControllerAtIndex:(NSUInteger)index
