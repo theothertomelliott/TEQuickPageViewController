@@ -2,12 +2,20 @@
 
 An extension of UIPageViewController to allow adding Views to a Page View directly in your Storyboard, **without any additional code**.
 
+Just create your Page View Controller in storyboard, add a few segues, and you have a working set of paged views.
+
 ![Pages in Storyboard](Screenshots/storyboard-example.png)
+
+TEQuickPageViewController supports Page Curl and Scroll transition types, as well as a two-page view with a Spine Location of "Mid".
 
 ![Curled Pages](Screenshots/curl-example.png)
 ![Scrolled Pages](Screenshots/scroll-example.png)
 
-TEQuickPageViewController supports Page Curl and Scroll transition types, as well as a two-page view with a Spine Location of "Mid".
+## Changes in this version
+
+Version 2 replaces the identifier-based method of linking views with a set of custom segues, to allow you to see the relationship between your controller and pages at a glance.
+
+If moving from version 1, you will need to add segues as detailed in the setup instructions below.
 
 ## Installing
 
@@ -15,7 +23,7 @@ TEQuickPageViewController supports Page Curl and Scroll transition types, as wel
 
 If you're using CocoaPods, just add the below to your podfile:
 
-    pod "TEQuickPageViewController"
+    pod "TEQuickPageViewController", '~> 2.0'
 
 ### Direct
 
@@ -23,6 +31,8 @@ To include the required source directly, just add these files to your project:
 
 * TEQuickPageViewController.h
 * TEQuickPageViewController.m
+* TEQuickPageViewSegue.h
+* TEQuickPageViewSegue.m
 
 ## Setting Up Your Page View
 
@@ -35,24 +45,24 @@ First, you'll need to prepare your UIPageViewController:
 
 ![Setting a Custom Class](Screenshots/2-setclass.png)
 
-* Open the Page View Controller's attribute inspector, you should see some new attributes for *Quick Page View Controller*. Set *Page Identifier Prefix* to a string of your choice that will identify your sequence of pages. Below, we've used "PageSequence"
+## Adding Pages
+
+To add a page to your sequence of pages, you will need to connect it to your controller or preceding pages:
+
+* Drag a *View Controller* into your Storyboard
+* Add a *custom* segue between your Page View Controller and the new View Controller.
+
+![Initial Segue](Screenshots/customsegue1.png)
+
+* Set the segue's class to *TEQuickPageViewSegue* and the Identifier to "page"
 
 ![Attribute Inspector Button](Screenshots/3-attributeinspector.png)
 
-![Setting an Identifier Prefix](Screenshots/4-setprefix.png)
+![Configuring a segue](Screenshots/page-storyboard.png)
 
-## Adding Pages
+To add a second page, just drag another View Controller into your view and add another custom segue with the same settings, this time from your first page. This will create a chain of pages in your storyboard.
 
-To add a page to your sequence of pages, you need to identify the page as belonging to your TEQuickPageViewController:
-
-* Drag a *View Controller* into your Storyboard
-* In the View Controller's Identity Inspector, set the Storyboard Identifier to the Page Identifier Prefix plus the number of the page in order. Below, our first page has an identifier "PageSequence0"
-
-![Identity inspector button](Screenshots/identityinspector.png)
-
-![Setting the Storyboard Identifier](Screenshots/page-setidentity.png)
-
-Pages are numbered from 0, so the identity of our first three pages would be "PageSequence0", "PageSequence1", "PageSequence2" in this example.
+![A chain of two pages](Screenshots/twopagechain.png)
 
 ## Additional Features
 
@@ -61,6 +71,20 @@ Pages are numbered from 0, so the identity of our first three pages would be "Pa
 The Wrap Around attribute in your TEQuickPageViewController's attributes allows your pages to "wrap" from the end back to the beginning.
 
 When disabled, the user will not be able to swipe backwards from the first page or forwards from the last page.
+
+## Custom Segue Identifier
+
+By default, your page segues need an identifier of "page", but this may not be desirable.
+
+To specify your own identifier, just set the "Segue Id" attribute on your TEQuickPageViewController. You can now change the identifier for your segues to this string.
+
+## Known Issues
+
+### Cycles Cause Crashes
+
+If you have a cycle in your chain of pages (such as connecting Page 1 -> Page 2 -> Page 1), this will result in an infinite loop when establishing the array of pages, and our app will crash.
+
+It should be easy to see if you have a loop in your chain, and remove the problem segue.
 
 ## Example Project
 
