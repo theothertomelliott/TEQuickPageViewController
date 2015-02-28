@@ -46,7 +46,7 @@
         [viewControllers addObject:destinationVC];
         
         // Populate the starting controllers as needed
-        if(viewControllers.count == 1 || (viewControllers.count == 1 && self.spineLocation == UIPageViewControllerSpineLocationMid)){
+        if(viewControllers.count == 1 || (viewControllers.count == 2 && self.spineLocation == UIPageViewControllerSpineLocationMid)){
             [startingViewControllers addObject:destinationVC];
         }
         
