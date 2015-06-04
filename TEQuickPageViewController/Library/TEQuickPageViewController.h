@@ -16,5 +16,6 @@
 @property (nonatomic) IBInspectable UIColor* indicatorTint;
 @property (nonatomic) IBInspectable UIColor* indicatorCurrentPageTint;
 
+-(UIViewController *)viewControllerAtIndex:(NSUInteger)index;
 
 @end

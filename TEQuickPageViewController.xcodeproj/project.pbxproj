@@ -15,6 +15,7 @@
 		E2702DDE1A9017E400E28BE8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2702DDC1A9017E400E28BE8 /* LaunchScreen.xib */; };
 		E2702DEA1A9017E400E28BE8 /* TEQuickPageViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E2702DE91A9017E400E28BE8 /* TEQuickPageViewControllerTests.m */; };
 		E2702DF61A90181100E28BE8 /* TEQuickPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2702DF51A90181100E28BE8 /* TEQuickPageViewController.m */; };
+		E2DBBA7F1B1FCC4D0057E924 /* Test4Page.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2DBBA7E1B1FCC4D0057E924 /* Test4Page.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,7 @@
 		E2702DE91A9017E400E28BE8 /* TEQuickPageViewControllerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TEQuickPageViewControllerTests.m; sourceTree = "<group>"; };
 		E2702DF41A90181100E28BE8 /* TEQuickPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TEQuickPageViewController.h; path = Library/TEQuickPageViewController.h; sourceTree = "<group>"; };
 		E2702DF51A90181100E28BE8 /* TEQuickPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TEQuickPageViewController.m; path = Library/TEQuickPageViewController.m; sourceTree = "<group>"; };
+		E2DBBA7E1B1FCC4D0057E924 /* Test4Page.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Test4Page.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 		E2702DE61A9017E400E28BE8 /* TEQuickPageViewControllerTests */ = {
 			isa = PBXGroup;
 			children = (
+				E2DBBA7E1B1FCC4D0057E924 /* Test4Page.storyboard */,
 				E2702DE91A9017E400E28BE8 /* TEQuickPageViewControllerTests.m */,
 				E2702DE71A9017E400E28BE8 /* Supporting Files */,
 			);
@@ -222,6 +225,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2DBBA7F1B1FCC4D0057E924 /* Test4Page.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
