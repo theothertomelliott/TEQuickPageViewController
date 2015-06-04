@@ -21,6 +21,9 @@
 
 @synthesize segueId;
 @synthesize wrapAround;
+@synthesize extendedPage;
+@synthesize indicatorTint;
+@synthesize indicatorCurrentPageTint;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -77,7 +80,29 @@
                     animated:NO completion:nil];
 }
 
+- (void) viewWillAppear:(BOOL)animated {
+    UIPageControl* pageControlAppearance = [UIPageControl appearanceWhenContainedIn:[TEQuickPageViewController class], nil];
+    [pageControlAppearance setPageIndicatorTintColor: indicatorTint];
+    [pageControlAppearance setCurrentPageIndicatorTintColor: indicatorCurrentPageTint];
+    [pageControlAppearance setBackgroundColor: [UIColor clearColor]];
+}
+
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+
+    if(extendedPage){
+        for (UIView *view in self.view.subviews) {
+            if ([view isKindOfClass:[NSClassFromString(@"_UIQueuingScrollView") class]]) {
+                CGRect frame = view.frame;
+                frame.size.height = view.superview.frame.size.height;
+                view.frame = frame;
+            }
+        }
+    }
+}
+
 - (NSData *)dataForView:(UIView *)view {
+    
     NSMutableData *data = [NSMutableData data];
     NSKeyedArchiver  *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
     [archiver encodeObject:view forKey:@"view"];

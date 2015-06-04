@@ -12,5 +12,9 @@
 
 @property (nonatomic) IBInspectable NSString* segueId;
 @property (nonatomic) IBInspectable BOOL wrapAround;
+@property (nonatomic) IBInspectable BOOL extendedPage;
+@property (nonatomic) IBInspectable UIColor* indicatorTint;
+@property (nonatomic) IBInspectable UIColor* indicatorCurrentPageTint;
+
 
 @end

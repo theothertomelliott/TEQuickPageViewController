@@ -23,7 +23,7 @@ If moving from version 1, you will need to add segues as detailed in the setup i
 
 If you're using CocoaPods, just add the below to your podfile:
 
-    pod "TEQuickPageViewController", '~> 2.0'
+    pod "TEQuickPageViewController", '~> 2.1'
 
 ### Direct
 
@@ -66,13 +66,33 @@ To add a second page, just drag another View Controller into your view and add a
 
 ## Additional Features
 
+### Extended Views (get rid of the black bar!)
+
+You'll probably have noticed the ugly black bar that appears at the bottom of your view when using the scroll transition.
+
+![The Ugly Black Bar](Screenshots/uglybar.png)
+
+To get rid of this, you can set up your TEQuickPageViewController to extend your pages across the entire view. Just open the Attributes inspector of your TEQuickPageViewController and set "Extended Page" *On*.
+
+![The Ugly Black Bar](Screenshots/extendedpage.png)
+
+![The Ugly Black Bar](Screenshots/nouglybar.png)
+
+Bingo! No more ugly bar. Of course, you may need to change the scroll indicator colors
+
+### Changing Indicator Colors
+
+You may have seen in the above screenshot for Extended Pages that there are color options for "Indicator Tint" and "Indicator Current".
+
+These control the color of the unselected page indicators and the currently selected page indicators respectively.
+
 ### Wrap Around
 
 The Wrap Around attribute in your TEQuickPageViewController's attributes allows your pages to "wrap" from the end back to the beginning.
 
 When disabled, the user will not be able to swipe backwards from the first page or forwards from the last page.
 
-## Custom Segue Identifier
+### Custom Segue Identifier
 
 By default, your page segues need an identifier of "page", but this may not be desirable.
 
