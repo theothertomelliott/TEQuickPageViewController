@@ -1,0 +1,3 @@
+language: objective-c
+xcode_project: TEQuickPageViewController.xcodeproj 
+xcode_scheme: TEQuickPageViewControllerTest

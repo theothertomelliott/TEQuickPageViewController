@@ -26,10 +26,14 @@
     [super tearDown];
 }
 
+- (void) testItFails {
+    XCTFail(@"Expect fail here");
+}
+
 /**
  * Test a 4 page layout with no wraparound
  */
-- (void)test4Pages {
+- (void)testItBuildsA4PageLayoutNoWraparound {
     
     NSBundle *bundle = [NSBundle bundleForClass:[self class]];
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Test4Page" bundle:bundle];
@@ -64,13 +68,6 @@
         XCTAssert([cur.restorationIdentifier isEqualToString:expected],@"Received unexpected identifier for view %d: %@", i, cur.restorationIdentifier);
     }
     
-}
-
-- (void)testPerformanceExample {
-    // This is an example of a performance test case.
-    [self measureBlock:^{
-        // Put the code you want to measure the time of here.
-    }];
 }
 
 @end
