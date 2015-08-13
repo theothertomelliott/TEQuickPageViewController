@@ -13,7 +13,6 @@
 @implementation TEQuickPageViewSegue
 
 - (void) perform {
-    
     NSNotificationCenter* notificationCenter = [NSNotificationCenter defaultCenter];
     [notificationCenter postNotificationName:TEQuickPageViewSegueNotification object:self];
 }
