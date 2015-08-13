@@ -1,3 +1,4 @@
 language: objective-c
 xcode_project: TEQuickPageViewController.xcodeproj 
 xcode_scheme: TEQuickPageViewControllerTests
+xcode_sdk: iphonesimulator8.4
