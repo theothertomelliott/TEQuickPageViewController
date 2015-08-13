@@ -1,5 +1,7 @@
 # TEQuickPageViewController
 
+[![Build Status](https://travis-ci.org/theothertomelliott/TEQuickPageViewController.svg?branch=2.1.1)](https://travis-ci.org/theothertomelliott/TEQuickPageViewController)
+
 An extension of UIPageViewController to allow adding Views to a Page View directly in your Storyboard, **without any additional code**.
 
 Just create your Page View Controller in storyboard, add a few segues, and you have a working set of paged views.
