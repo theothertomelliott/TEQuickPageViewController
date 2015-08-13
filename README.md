@@ -15,9 +15,7 @@ TEQuickPageViewController supports Page Curl and Scroll transition types, as wel
 
 ## Changes in this version
 
-Version 2 replaces the identifier-based method of linking views with a set of custom segues, to allow you to see the relationship between your controller and pages at a glance.
-
-If moving from version 1, you will need to add segues as detailed in the setup instructions below.
+See [CHANGELOG.md](CHANGELOG.md) for a full list of changes in each version.
 
 ## Installing
 
