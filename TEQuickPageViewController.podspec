@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
   s.license      = "MIT"
   s.author             = { "Tom Elliott" => "tom.w.elliott@gmail.com" }
   s.platform     = :ios
-  s.source       = { :git => "https://github.com/theothertomelliott/TEQuickPageViewController.git", :tag => "2.1.0" }
+  s.source       = { :git => "https://github.com/theothertomelliott/TEQuickPageViewController.git", :tag => "2.1.1" }
   s.source_files  = "TEQuickPageViewController/Library", "TEQuickPageViewController/Library/**/*.{h,m}"
   s.exclude_files = "TEQuickPageViewController/Library/Exclude"
   s.requires_arc  = true
