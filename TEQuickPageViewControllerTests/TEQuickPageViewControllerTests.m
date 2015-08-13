@@ -26,10 +26,6 @@
     [super tearDown];
 }
 
-- (void) testItFails {
-    XCTFail(@"Expect fail here");
-}
-
 /**
  * Test a 4 page layout with no wraparound
  */
