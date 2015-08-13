@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E21A5EBD1AA131AF00E684C9 /* TEQuickPageViewSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = E21A5EBC1AA131AF00E684C9 /* TEQuickPageViewSegue.m */; };
+		E24D75D91B7C1C6000DB8F4D /* Test4PageWithWraparound.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E24D75D81B7C1C6000DB8F4D /* Test4PageWithWraparound.storyboard */; };
 		E2702DD01A9017E400E28BE8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E2702DCF1A9017E400E28BE8 /* main.m */; };
 		E2702DD31A9017E400E28BE8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E2702DD21A9017E400E28BE8 /* AppDelegate.m */; };
 		E2702DD91A9017E400E28BE8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2702DD71A9017E400E28BE8 /* Main.storyboard */; };
@@ -15,7 +16,7 @@
 		E2702DDE1A9017E400E28BE8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2702DDC1A9017E400E28BE8 /* LaunchScreen.xib */; };
 		E2702DEA1A9017E400E28BE8 /* TEQuickPageViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E2702DE91A9017E400E28BE8 /* TEQuickPageViewControllerTests.m */; };
 		E2702DF61A90181100E28BE8 /* TEQuickPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2702DF51A90181100E28BE8 /* TEQuickPageViewController.m */; };
-		E2DBBA7F1B1FCC4D0057E924 /* Test4Page.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2DBBA7E1B1FCC4D0057E924 /* Test4Page.storyboard */; };
+		E2DBBA7F1B1FCC4D0057E924 /* Test4PageNoWraparound.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2DBBA7E1B1FCC4D0057E924 /* Test4PageNoWraparound.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +32,7 @@
 /* Begin PBXFileReference section */
 		E21A5EBB1AA131AF00E684C9 /* TEQuickPageViewSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TEQuickPageViewSegue.h; path = Library/TEQuickPageViewSegue.h; sourceTree = "<group>"; };
 		E21A5EBC1AA131AF00E684C9 /* TEQuickPageViewSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TEQuickPageViewSegue.m; path = Library/TEQuickPageViewSegue.m; sourceTree = "<group>"; };
+		E24D75D81B7C1C6000DB8F4D /* Test4PageWithWraparound.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Test4PageWithWraparound.storyboard; sourceTree = "<group>"; };
 		E2702DCA1A9017E400E28BE8 /* TEQuickPageViewController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TEQuickPageViewController.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2702DCE1A9017E400E28BE8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E2702DCF1A9017E400E28BE8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -44,7 +46,7 @@
 		E2702DE91A9017E400E28BE8 /* TEQuickPageViewControllerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TEQuickPageViewControllerTests.m; sourceTree = "<group>"; };
 		E2702DF41A90181100E28BE8 /* TEQuickPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TEQuickPageViewController.h; path = Library/TEQuickPageViewController.h; sourceTree = "<group>"; };
 		E2702DF51A90181100E28BE8 /* TEQuickPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TEQuickPageViewController.m; path = Library/TEQuickPageViewController.m; sourceTree = "<group>"; };
-		E2DBBA7E1B1FCC4D0057E924 /* Test4Page.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Test4Page.storyboard; sourceTree = "<group>"; };
+		E2DBBA7E1B1FCC4D0057E924 /* Test4PageNoWraparound.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Test4PageNoWraparound.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,7 +111,8 @@
 		E2702DE61A9017E400E28BE8 /* TEQuickPageViewControllerTests */ = {
 			isa = PBXGroup;
 			children = (
-				E2DBBA7E1B1FCC4D0057E924 /* Test4Page.storyboard */,
+				E2DBBA7E1B1FCC4D0057E924 /* Test4PageNoWraparound.storyboard */,
+				E24D75D81B7C1C6000DB8F4D /* Test4PageWithWraparound.storyboard */,
 				E2702DE91A9017E400E28BE8 /* TEQuickPageViewControllerTests.m */,
 				E2702DE71A9017E400E28BE8 /* Supporting Files */,
 			);
@@ -225,7 +228,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E2DBBA7F1B1FCC4D0057E924 /* Test4Page.storyboard in Resources */,
+				E2DBBA7F1B1FCC4D0057E924 /* Test4PageNoWraparound.storyboard in Resources */,
+				E24D75D91B7C1C6000DB8F4D /* Test4PageWithWraparound.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
