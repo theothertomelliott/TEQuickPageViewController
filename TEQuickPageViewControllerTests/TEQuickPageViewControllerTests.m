@@ -12,13 +12,16 @@
 
 @interface TEQuickPageViewControllerTests : XCTestCase
 
+@property (nonatomic) NSBundle* bundle;
+
 @end
 
 @implementation TEQuickPageViewControllerTests
 
 - (void)setUp {
     [super setUp];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
+
+    self.bundle = [NSBundle bundleForClass:[self class]];
 }
 
 - (void)tearDown {
@@ -26,50 +29,20 @@
     [super tearDown];
 }
 
+#pragma mark Test Definitions
+
 /**
  * Test a 4 page layout with wraparound
  */
 - (void)testItBuildsA4PageLayoutWithWraparound {
     
-    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Test4PageWithWraparound" bundle:bundle];
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Test4PageWithWraparound" bundle:self.bundle];
     
     // Get the initial view controller for the example storyboard, should set up the board
     TEQuickPageViewController *vc = [sb instantiateInitialViewController];
     [vc viewDidLoad];
     
-    int TOTAL_PAGES = 4;
-    
-    // Check that we have 4 pages
-    XCTAssert(TOTAL_PAGES == [vc presentationCountForPageViewController:vc], @"Expected 4 pages.");
-    
-    // Pull the first page
-    UIViewController* currentPage = [vc viewControllerAtIndex:0];
-    XCTAssert(currentPage != nil, @"Expected a first page!");
-
-    // Make three forward passes over the page sequence
-    
-    for(int i = 0; i < TOTAL_PAGES * 3; i++){
-        int position = i%TOTAL_PAGES;
-       NSString* expected = [NSString stringWithFormat:@"View%d",position];
-        XCTAssert([currentPage.restorationIdentifier isEqualToString:expected],@"Received unexpected identifier for view %d: %@, expected %@", i, currentPage.restorationIdentifier, expected);
-        currentPage = [vc pageViewController:vc viewControllerAfterViewController:currentPage];
-    }
-    
-    // Make three reverse passes over the page sequence
-    
-    currentPage = [vc viewControllerAtIndex:0];
-    
-    for(int i = 0; i < TOTAL_PAGES * 3; i++){
-        int position = TOTAL_PAGES - (i%TOTAL_PAGES);
-        if(position == TOTAL_PAGES){
-            position = 0;
-        }
-        NSString* expected = [NSString stringWithFormat:@"View%d",position];
-        XCTAssert([currentPage.restorationIdentifier isEqualToString:expected],@"Received unexpected identifier for view %d: %@, expected %@", i, currentPage.restorationIdentifier, expected);
-        currentPage = [vc pageViewController:vc viewControllerBeforeViewController:currentPage];
-    }
-    
+    [self controllerHandlesWraparound:vc withTotalPages:4 andRIPrefix:@"View"];
 }
 
 /**
@@ -77,17 +50,39 @@
  */
 - (void)testItBuildsA4PageLayoutNoWraparound {
     
-    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Test4PageNoWraparound" bundle:bundle];
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Test4PageNoWraparound" bundle:self.bundle];
     
     // Get the initial view controller for the example storyboard, should set up the board
     TEQuickPageViewController *vc = [sb instantiateInitialViewController];
     [vc viewDidLoad];
     
-    // Check that we have 4 pages
-    XCTAssert(4 == [vc presentationCountForPageViewController:vc], @"Expected 4 pages.");
+    [self controllerHandlesNoWraparound:vc withTotalPages:4 andRIPrefix:@"View"];
+}
+
+/**
+ * Test multiple 2 page layouts
+ */
+- (void)testItHandlesMultiple2PageLayouts {
     
-    NSMutableArray* pages = [NSMutableArray arrayWithCapacity:4];
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"TestMultiple2Page" bundle:self.bundle];
+    
+    // Get the initial view controller for the example storyboard, should set up the board
+    TEQuickPageViewController *vc1 = [sb instantiateInitialViewController];
+    TEQuickPageViewController *vc2 = [sb instantiateViewControllerWithIdentifier:@"Set2"];
+    [vc1 viewDidLoad];
+    [vc2 viewDidLoad];
+    
+    [self controllerHandlesNoWraparound:vc1 withTotalPages:2 andRIPrefix:@"Set1-"];
+    [self controllerHandlesNoWraparound:vc2 withTotalPages:2 andRIPrefix:@"Set2-"];
+}
+
+#pragma mark Test Utility Methods
+
+- (void)controllerHandlesNoWraparound:(TEQuickPageViewController*) vc withTotalPages:(int)totalPages andRIPrefix:(NSString*) riPrefix {
+    // Check that we have 4 pages
+    XCTAssert(totalPages == [vc presentationCountForPageViewController:vc], @"Unexpected number of pages: %ld", (long)[vc presentationCountForPageViewController:vc]);
+    
+    NSMutableArray* pages = [NSMutableArray arrayWithCapacity:totalPages];
     
     // Pull the first page
     UIViewController* currentPage = [vc viewControllerAtIndex:0];
@@ -105,11 +100,43 @@
     
     for (int i = 0; i < [pages count]; i++){
         UIViewController* cur = [pages objectAtIndex:i];
-        NSString* expected = [NSString stringWithFormat:@"View%d",i];
+        NSString* expected = [NSString stringWithFormat:@"%@%d",riPrefix,i];
         
         XCTAssert([cur.restorationIdentifier isEqualToString:expected],@"Received unexpected identifier for view %d: %@", i, cur.restorationIdentifier);
     }
-    
 }
+
+- (void)controllerHandlesWraparound:(TEQuickPageViewController*) vc withTotalPages:(int)totalPages andRIPrefix:(NSString*) riPrefix {
+    // Check that we have 4 pages
+    XCTAssert(totalPages == [vc presentationCountForPageViewController:vc], @"Unexpected number of pages.");
+    
+    // Pull the first page
+    UIViewController* currentPage = [vc viewControllerAtIndex:0];
+    XCTAssert(currentPage != nil, @"Expected a first page!");
+    
+    // Make three forward passes over the page sequence
+    
+    for(int i = 0; i < totalPages * 3; i++){
+        int position = i%totalPages;
+        NSString* expected = [NSString stringWithFormat:@"%@%d",riPrefix,position];
+        XCTAssert([currentPage.restorationIdentifier isEqualToString:expected],@"Received unexpected identifier for view %d: %@, expected %@", i, currentPage.restorationIdentifier, expected);
+        currentPage = [vc pageViewController:vc viewControllerAfterViewController:currentPage];
+    }
+    
+    // Make three reverse passes over the page sequence
+    
+    currentPage = [vc viewControllerAtIndex:0];
+    
+    for(int i = 0; i < totalPages * 3; i++){
+        int position = totalPages - (i%totalPages);
+        if(position == totalPages){
+            position = 0;
+        }
+        NSString* expected = [NSString stringWithFormat:@"%@%d",riPrefix,position];
+        XCTAssert([currentPage.restorationIdentifier isEqualToString:expected],@"Received unexpected identifier for view %d: %@, expected %@", i, currentPage.restorationIdentifier, expected);
+        currentPage = [vc pageViewController:vc viewControllerBeforeViewController:currentPage];
+    }
+}
+
 
 @end
