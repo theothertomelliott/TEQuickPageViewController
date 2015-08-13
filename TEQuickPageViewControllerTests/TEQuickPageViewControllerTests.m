@@ -86,24 +86,19 @@
     
     // Pull the first page
     UIViewController* currentPage = [vc viewControllerAtIndex:0];
-    UIViewController* nextPage = [vc pageViewController:vc viewControllerAfterViewController:currentPage];
     XCTAssert(currentPage != nil, @"Expected a first page!");
     
+    XCTAssert(nil == [vc pageViewController:vc viewControllerBeforeViewController:currentPage],@"Expected a null page before beginning of sequence.");
+    
     [pages addObject:currentPage];
-    while(nextPage != nil){
-        currentPage = nextPage;
-        [pages addObject:currentPage];
-        nextPage = [vc pageViewController:vc viewControllerAfterViewController:currentPage];
-    }
-    
-    XCTAssert([pages count] == [vc presentationCountForPageViewController:vc],@"Expected to retrieve the advertised number of pages.");
-    
-    for (int i = 0; i < [pages count]; i++){
-        UIViewController* cur = [pages objectAtIndex:i];
+    for(int i = 0; i < totalPages; i++){
         NSString* expected = [NSString stringWithFormat:@"%@%d",riPrefix,i];
+        XCTAssert([currentPage.restorationIdentifier isEqualToString:expected],@"Received unexpected identifier for view %d: %@", i, currentPage.restorationIdentifier);
         
-        XCTAssert([cur.restorationIdentifier isEqualToString:expected],@"Received unexpected identifier for view %d: %@", i, cur.restorationIdentifier);
+        currentPage = [vc pageViewController:vc viewControllerAfterViewController:currentPage];
     }
+    
+    XCTAssert(nil == currentPage,@"Expected a null page after end of sequence.");
 }
 
 - (void)controllerHandlesWraparound:(TEQuickPageViewController*) vc withTotalPages:(int)totalPages andRIPrefix:(NSString*) riPrefix {
