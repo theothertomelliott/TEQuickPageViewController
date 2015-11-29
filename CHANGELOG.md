@@ -2,7 +2,14 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unreleased][unreleased]
+## [2.1.2] - 2015-11-29
+
+### Changed
+
+- Update project settings for XCode 7.
+- Fixed a warning regarding deprecation in iOS9.
+
+## [2.1.1] - 2015-08-13
 
 ### Added
 - This change log.
@@ -25,7 +32,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - TEQuickPageViewController is an extension of UIPageViewController that allows configuration of a set of scrollable pages in a Storyboard without any code. Views are attached to the sequence of pages by setting identifiers that correspond to the parent page view controller.
 
-[unreleased]: https://github.com/theothertomelliott/TEQuickPageViewController/compare/2.1.0...2.1.1
+[2.1.2]: https://github.com/theothertomelliott/TEQuickPageViewController/compare/2.1.1...2.1.2
+[2.1.1]: https://github.com/theothertomelliott/TEQuickPageViewController/compare/2.1.0...2.1.1
 [2.1.0]: https://github.com/theothertomelliott/TEQuickPageViewController/compare/2.0.0...2.1.0
 [2.0.0]: https://github.com/theothertomelliott/TEQuickPageViewController/compare/1.0.0...2.0.0
 [1.0.0]: https://github.com/theothertomelliott/TEQuickPageViewController/commit/c0143ef7a7b3bd65e2aa6be2ca2bcc4d601f54f9
