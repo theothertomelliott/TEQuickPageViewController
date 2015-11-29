@@ -81,7 +81,17 @@
 }
 
 - (void) viewWillAppear:(BOOL)animated {
+
+#ifdef __IPHONE_OS_VERSION_MIN_REQUIRED
+    // target is iOS
+#if __IPHONE_OS_VERSION_MIN_REQUIRED < 90000
+    // target is lower than iOS 9.0
     UIPageControl* pageControlAppearance = [UIPageControl appearanceWhenContainedIn:[TEQuickPageViewController class], nil];
+#else
+    // target is at least iOS 9.0
+    UIPageControl* pageControlAppearance = [UIPageControl appearanceWhenContainedInInstancesOfClasses:@[[TEQuickPageViewController class]]];
+#endif
+#endif
     [pageControlAppearance setPageIndicatorTintColor: indicatorTint];
     [pageControlAppearance setCurrentPageIndicatorTintColor: indicatorCurrentPageTint];
     [pageControlAppearance setBackgroundColor: [UIColor clearColor]];
