@@ -1,6 +1,6 @@
 # TEQuickPageViewController
 
-[![Build Status](https://travis-ci.org/theothertomelliott/TEQuickPageViewController.svg?branch=master)](https://travis-ci.org/theothertomelliott/TEQuickPageViewController)
+[![Build Status](https://travis-ci.org/theothertomelliott/TEQuickPageViewController.svg?branch=master)](https://travis-ci.org/theothertomelliott/TEQuickPageViewController) [![Code Climate](https://codeclimate.com/github/theothertomelliott/TEQuickPageViewController/badges/gpa.svg)](https://codeclimate.com/github/theothertomelliott/TEQuickPageViewController)
 
 An extension of UIPageViewController to allow adding Views to a Page View directly in your Storyboard, **without any additional code**.
 
